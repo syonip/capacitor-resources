@@ -1,53 +1,51 @@
 {
-    "name": "cordova-res-generator",
-    "version": "0.4.2",
-    "description": "Generates icon & splash screen for cordova/ionic projects using javascript only.",
-    "main": "index.js",
-    "preferGlobal": true,
-    "bin": {
-        "crgen": "./bin/crgen",
-        "cordova-res-generator": "./bin/cordova-res-generator"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/olivab/cordova-res-generator.git"
-    },
-    "keywords": [
-        "cordova",
-        "ionic",
-        "phonegap",
-        "icon",
-        "splash",
-        "splashscreen",
-        "generator",
-        "cli",
-        "tool"
-    ],
-    "author": {
-        "name": "Olivab",
-        "email": "olivabdev@gmail.com"
-    },
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/olivab/cordova-res-generator/issues"
-    },
-    "homepage": "https://github.com/olivab/cordova-res-generator",
-    "dependencies": {
-        "bluebird": "^3.5.1",
-        "colors": "^1.1.2",
-        "commander": "^2.12.2",
-        "fs-extra": "^4.0.2",
-        "jimp": "^0.2.28",
-        "lodash": "^4.17.4",
-        "gauge": "^2.7.4"
-    },
-    "contributors": [
-        {
-            "name": "Olivab",
-            "email": "olivabdev@gmail.com"
-        }
-    ]
+  "name": "capacitor-resources",
+  "version": "0.4.2",
+  "description": "Generates icon & splash screen for capacitor projects using javascript only.",
+  "main": "index.js",
+  "preferGlobal": true,
+  "bin": {
+    "capacitor-resources": "./bin/capacitor-resources"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leopq/capacitor-resources.git"
+  },
+  "keywords": [
+    "capacitor",
+    "resources",
+    "icon",
+    "splash",
+    "splashscreen",
+    "generator",
+    "cli",
+    "tool"
+  ],
+  "author": {
+    "name": "Leonardo Quevedo",
+    "email": "lpachecoquevedo@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leopq/capacitor-resources/issues"
+  },
+  "homepage": "https://github.com/leopq/capacitor-resources",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "colors": "^1.1.2",
+    "commander": "^2.12.2",
+    "fs-extra": "^4.0.2",
+    "jimp": "^0.2.28",
+    "lodash": "^4.17.4",
+    "gauge": "^2.7.4"
+  },
+  "contributors": [
+    {
+      "name": "leopq",
+      "email": "leopqdev@gmail.com"
+    }
+  ]
 }
