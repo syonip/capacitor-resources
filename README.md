@@ -1,8 +1,8 @@
-# cordova-res-generator
+# Capacitor Resources
 
 ## Introduction
 
-Automatic icon and splash screen resizing CLI tool for **Cordova**/**Ionic**/**PhoneGap** based applications.
+Automatic icon and splash screen resizing CLI tool for Capacitor based applications.
 
 It automatically resizes and copies your ```icon.png``` and ```splash.png``` files to platform dedicated directories.
 
@@ -12,7 +12,7 @@ It does **NOT require** any external binary libraries. **Javascript only**.
 
 ## Installation
 
-    $ npm install cordova-res-generator -g
+    $ npm install capacitor-resources -g
 
 ---
 
@@ -24,11 +24,8 @@ Add your ```icon.png``` (1024x1024 px) and ```splash.png``` (2732x2732 px) files
 
 ### Command line
 
-    $ cordova-res-generator
+    $ capacitor-resources
 
-or
-
-    $ crgen
 
 **ATTENTION:** while preserving source files, it overwrites previous output if any.
 
@@ -61,13 +58,17 @@ This way, you won't have to type every now and again the whole command line with
       ...
       "scripts": {
         ...
-          "resgen": "crgen -p android,ios"
+          "resources": "capacitor-resources -p android,ios"
       }
     }
 
 All you have to do then is type :
 
-    npm run resgen
+    $ npm run resources
+    
+or
+
+    $ yarn resources
 
 NPM will cope with typing the whole command line for you.
 
@@ -83,11 +84,6 @@ Supported platforms:
 - **Android**
   - icons
   - splash screens
-- **Windows**
-  - icons
-  - splash screens
-- **Blackberry 10**
-  - icons
 
 ---
 
