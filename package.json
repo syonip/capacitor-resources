@@ -1,6 +1,6 @@
 {
   "name": "capacitor-resources",
-  "version": "0.4.2",
+  "version": "1.0.0",
   "description": "Generates icon & splash screen for capacitor projects using javascript only.",
   "main": "index.js",
   "preferGlobal": true,
@@ -34,18 +34,25 @@
   },
   "homepage": "https://github.com/leopq/capacitor-resources",
   "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
     "bluebird": "^3.5.1",
     "colors": "^1.1.2",
     "commander": "^2.12.2",
     "fs-extra": "^4.0.2",
+    "gauge": "^2.7.4",
     "jimp": "^0.2.28",
+    "klaw-sync": "^6.0.0",
     "lodash": "^4.17.4",
-    "gauge": "^2.7.4"
+    "shelljs": "^0.8.3"
   },
   "contributors": [
     {
       "name": "leopq",
-      "email": "leopqdev@gmail.com"
+      "email": "lpachecoquevedo@gmail.com"
     }
   ]
 }
