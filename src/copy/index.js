@@ -12,13 +12,13 @@ const copyAndroid = require('./android/index')
 const copyIOS = require('./ios/index')
 const { log } = console
 
-const copyIOS = () => {}
-
 module.exports = async () => {
   return new Promise((resolve, reject) => {
     copyAndroid()
       .then(() => {
-        resolve()
+        copyIOS().then(() => {
+          resolve()
+        })
       })
       .catch(e => {
         reject(e)

@@ -1,5 +1,9 @@
 # Capacitor Resources
 
+> Generate icon & splash screen for Capacitor projects using javascript only.
+
+[![basic-merchandising](https://imgur.com/LNOYczf.png)](https://github.com/leopq)
+
 ## Introduction
 
 Automatic icon and splash screen resizing CLI tool for Capacitor based applications.

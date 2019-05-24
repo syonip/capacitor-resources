@@ -13,13 +13,12 @@ const generate = require('./generate/index')
 const copy = require('./copy/index')
 const { log } = console
 
-const run = async () => {
+module.exports = () => {
   log(`Capacitor Resources v${pjson.version}`.bold.green)
   log('-------------------')
   generate()
     .then(() => {
       copy().then(() => {
-        console.log('Yay!')
         log('Capacitor resources generated successfully!')
       })
     })
@@ -27,5 +26,3 @@ const run = async () => {
       log(e)
     })
 }
-
-run()

@@ -314,15 +314,14 @@ const settings = {
   makesplash: program.makesplash || (!program.makeicon && !program.makesplash) ? true : false
 }
 
-const exports = () =>
-  new Promise((resolve, reject) => {
-    check(settings)
-      .then(() =>
-        generate(imageObjects, settings).then(() => {
-          resolve()
-        })
-      )
-      .catch(err => reject(err))
-  })
-
-module.exports = exports
+module.exports = new Promise((resolve, reject) => {
+  check(settings)
+    .then(() =>
+      generate(imageObjects, settings).then(() => {
+        resolve()
+      }).catch(e => {
+        reject(e)
+      })
+    )
+    .catch(e => reject(e))
+})
