@@ -1,5 +1,7 @@
 
 /resources/*/
+/android/*/
+/ios/*/
 
 # system
 .DS_Store

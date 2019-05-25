@@ -12,7 +12,7 @@ const copyAndroid = require('./platforms/android/index')
 const copyIOS = require('./platforms/ios/index')
 const { log } = console
 
-module.exports = async () => {
+module.exports = () => {
   return new Promise((resolve, reject) => {
     copyAndroid()
       .then(() => {

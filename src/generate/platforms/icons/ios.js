@@ -1,105 +1,121 @@
 module.exports = {
-    platform: 'ios',
-    type: 'icon',
-    path: 'ios/icon',
-    definitions: [{
-            name: 'icon.png',
-            size: 57,
-            comment: 'Default icon (avoid Apple submit error ITMS-90032)'
-        },
-        {
-            name: 'icon@2x.png',
-            size: 114,
-            comment: 'iPhone / iPod Touch'
-        },
-        // iOS 6.1, Spotlight Icon
-        {
-            name: 'icon-40.png',
-            size: 40,
-            comment: 'iOS 6.1, Spotlight Icon'
-        },
-        {
-            name: 'icon-40@2x.png',
-            size: 80,
-            comment: 'iOS 6.1, Spotlight Icon'
-        },
-        {
-            name: 'icon-40@3x.png',
-            size: 120,
-            comment: 'iOS 6.1, Spotlight Icon'
-        },
-        // iPad Spotlight and Settings Icon
-        {
-            name: 'icon-50.png',
-            size: 50,
-            comment: 'iPad Spotlight and Settings Icon'
-        },
-        {
-            name: 'icon-50@2x.png',
-            size: 100,
-            comment: 'iPad Spotlight and Settings Icon'
-        },
-        // iOS 7.0+, iPhone / iPod Touch
-        {
-            name: 'icon-60.png',
-            size: 60,
-            comment: 'iOS 7.0+, iPhone / iPod Touch'
-        },
-        // iPhone 6s, iPhone 6, iPhone SE
-        {
-            name: 'icon-60@2x.png',
-            size: 120,
-            comment: 'iPhone 6s, iPhone 6, iPhone SE'
-        },
-        // iOS 8.0+, iPhone 6s Plus, iPhone 6 Plus
-        {
-            name: 'icon-60@3x.png',
-            size: 180,
-            comment: 'iOS 8.0+, iPhone 6s Plus, iPhone 6 Plus'
-        },
-        // iPad
-        {
-            name: 'icon-72.png',
-            size: 72,
-            comment: 'iPad'
-        },
-        {
-            name: 'icon-72@2x.png',
-            size: 144,
-            comment: 'iPad'
-        },
-        {
-            name: 'icon-76.png',
-            size: 76,
-            comment: 'iPad'
-        },
-        // iPad, iPad mini
-        {
-            name: 'icon-76@2x.png',
-            size: 152,
-            comment: 'iPad, iPad mini'
-        },
-        // iPad Pro
-        {
-            name: 'icon-83.5@2x.png',
-            size: 167,
-            comment: 'iPad Pro'
-        },
-        // iPhone Spotlight and Settings Icon
-        {
-            name: 'icon-small.png',
-            size: 29,
-            comment: 'iPhone Spotlight and Settings Icon'
-        },
-        {
-            name: 'icon-small@2x.png',
-            size: 58,
-            comment: 'iPhone Spotlight and Settings Icon'
-        },
-        {
-            name: 'icon-small@3x.png',
-            size: 87,
-            comment: 'iPhone Spotlight and Settings Icon'
-        }
-    ]
-};
+  platform: 'ios',
+  type: 'icon',
+  path: 'ios/icon',
+  definitions: [
+    {
+      size: 20,
+      idiom: 'iphone',
+      name: 'AppIcon-20x20@1x.png',
+      scale: '2x'
+    },
+    {
+      size: 40,
+      idiom: 'iphone',
+      name: 'AppIcon-20x20@2x.png',
+      scale: '2x'
+    },
+    {
+      size: 60,
+      idiom: 'iphone',
+      name: 'AppIcon-20x20@3x.png',
+      scale: '3x'
+    },
+    {
+      size: 58,
+      idiom: 'iphone',
+      name: 'AppIcon-29x29@2x-1.png',
+      scale: '2x'
+    },
+    {
+      size: 87,
+      idiom: 'iphone',
+      name: 'AppIcon-29x29@3x.png',
+      scale: '3x'
+    },
+    {
+      size: 80,
+      idiom: 'iphone',
+      name: 'AppIcon-40x40@2x.png',
+      scale: '2x'
+    },
+    {
+      size: 120,
+      idiom: 'iphone',
+      name: 'AppIcon-40x40@3x.png',
+      scale: '3x'
+    },
+    {
+      size: 120,
+      idiom: 'iphone',
+      name: 'AppIcon-60x60@2x.png',
+      scale: '2x'
+    },
+    {
+      size: 180,
+      idiom: 'iphone',
+      name: 'AppIcon-60x60@3x.png',
+      scale: '3x'
+    },
+    {
+      size: 20,
+      idiom: 'ipad',
+      name: 'AppIcon-20x20@1x.png',
+      scale: '1x'
+    },
+    {
+      size: 40,
+      idiom: 'ipad',
+      name: 'AppIcon-20x20@2x-1.png',
+      scale: '2x'
+    },
+    {
+      size: 29,
+      idiom: 'ipad',
+      name: 'AppIcon-29x29@1x.png',
+      scale: '1x'
+    },
+    {
+      size: 58,
+      idiom: 'ipad',
+      name: 'AppIcon-29x29@2x.png',
+      scale: '2x'
+    },
+    {
+      size: 40,
+      idiom: 'ipad',
+      name: 'AppIcon-40x40@1x.png',
+      scale: '1x'
+    },
+    {
+      size: 80,
+      idiom: 'ipad',
+      name: 'AppIcon-40x40@2x-1.png',
+      scale: '2x'
+    },
+    {
+      size: 76,
+      idiom: 'ipad',
+      name: 'AppIcon-76x76@1x.png',
+      scale: '1x'
+    },
+    {
+      size: 152,
+      idiom: 'ipad',
+      name: 'AppIcon-76x76@2x.png',
+      scale: '2x'
+    },
+    {
+      size: 167,
+      idiom: 'ipad',
+      name: 'AppIcon-83.5x83.5@2x.png',
+      scale: '2x'
+    },
+    {
+      size: 1024,
+      idiom: 'ios-marketing',
+      name: 'AppIcon-512@2x.png',
+      scale: '1x'
+    }
+  ]
+}

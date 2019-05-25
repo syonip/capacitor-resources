@@ -92,11 +92,11 @@ const copyAndroidSplashes = async () => {
 }
 
 module.exports = () =>
-  new Promise((resolve, reject) => {
+  new Promise(async (resolve, reject) => {
     try {
       if (fs.existsSync(androidIconsDestination)) {
-        copyAndroidIcons()
-        copyAndroidSplashes()
+        await copyAndroidIcons()
+        await copyAndroidSplashes()
         resolve()
       } else {
         resolve()
