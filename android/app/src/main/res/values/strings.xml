@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Argo Instant</string>
+    <string name="title_activity_main">Argo Instant</string>
+    <string name="package_name">com.argo.instant</string>
+    <string name="fileprovider_authority">com.argo.instant.fileprovider</string>
+    <string name="custom_url_scheme">com.argo.instant</string>
+</resources>

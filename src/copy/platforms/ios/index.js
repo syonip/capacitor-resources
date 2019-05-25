@@ -79,12 +79,17 @@ const copyIOSSplashes = async () => {
   )
 }
 
-module.exports = new Promise((resolve, reject) => {
-  try {
-    copyIOSIcons()
-    copyIOSSplashes()
-    resolve()
-  } catch (e) {
-    reject(e)
-  }
-})
+module.exports = () =>
+  new Promise((resolve, reject) => {
+    try {
+      if (fs.existsSync(iosIconsDestination)) {
+        copyIOSIcons()
+        copyIOSSplashes()
+        resolve()
+      } else {
+        resolve()
+      }
+    } catch (e) {
+      reject(e)
+    }
+  })

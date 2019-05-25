@@ -2,7 +2,7 @@
 
 require('colors')
 
-const program = require('commander')
+const commander = require('commander')
 const Q = require('bluebird')
 const fs = require('fs-extra')
 const path = require('path')
@@ -29,7 +29,7 @@ const display = {
   },
   header: str => {
     log('')
-    log(str)
+    log(str.yellow)
   }
 }
 
@@ -55,7 +55,7 @@ let selectedPlatforms = []
 // app functions
 
 function check(settings) {
-  display.header('Checking files and directories...'.yellow)
+  display.header('Checking files and directories...')
 
   return checkPlatforms(settings)
     .then(selPlatforms => (selectedPlatforms = selPlatforms))
@@ -257,29 +257,32 @@ function generateForConfig(imageObj, settings, config) {
 }
 
 function generate(imageObj, settings) {
-  display.header('Generating files')
+  return new Promise((resolve, reject) => {
+    try {
+      display.header('Generating files...')
 
-  const configs = []
+      const configs = []
 
-  selectedPlatforms.forEach(platform => {
-    PLATFORMS[platform].definitions.forEach(def => configs.push(require(def)))
-  })
+      selectedPlatforms.forEach(platform => {
+        PLATFORMS[platform].definitions.forEach(def => configs.push(require(def)))
+      })
 
-  const filteredConfigs = _.filter(configs, config => {
-    if (config.type === 'icon' && settings.makeicon) return true
-    if (config.type === 'splash' && settings.makesplash) return true
-    return false
-  })
+      const filteredConfigs = _.filter(configs, config => {
+        if (config.type === 'icon' && settings.makeicon) return true
+        if (config.type === 'splash' && settings.makesplash) return true
+        return false
+      })
 
-  return Q.mapSeries(filteredConfigs, config => generateForConfig(imageObj, settings, config)).then(
-    () => {
-      //display.success("Successfully generated all files");
+      Q.mapSeries(filteredConfigs, config => generateForConfig(imageObj, settings, config)).then(
+        () => {
+          display.success('Successfully generated all files')
+          resolve()
+        }
+      )
+    } catch (e) {
+      reject(e)
     }
-  )
-}
-
-function catchErrors(err) {
-  if (err) log('Error: ', err)
+  })
 }
 
 // cli helper configuration
@@ -288,7 +291,7 @@ function processList(val) {
   return val.split(',')
 }
 
-program
+commander
   .version(pjson.version)
   .description(pjson.description)
   .option('-i, --icon [optional]', 'optional icon file path (default: ./resources/icon.png)')
@@ -306,22 +309,21 @@ program
 // app settings and default values
 
 const settings = {
-  iconfile: program.icon || path.join('.', 'resources', 'icon.png'),
-  splashfile: program.splash || path.join('.', 'resources', 'splash.png'),
-  platforms: program.platforms || undefined,
-  outputdirectory: program.outputdir || path.join('.', 'resources'),
-  makeicon: program.makeicon || (!program.makeicon && !program.makesplash) ? true : false,
-  makesplash: program.makesplash || (!program.makeicon && !program.makesplash) ? true : false
+  iconfile: commander.icon || path.join('.', 'resources', 'icon.png'),
+  splashfile: commander.splash || path.join('.', 'resources', 'splash.png'),
+  platforms: commander.platforms || undefined,
+  outputdirectory: commander.outputdir || path.join('.', 'resources'),
+  makeicon: commander.makeicon || (!commander.makeicon && !commander.makesplash) ? true : false,
+  makesplash: commander.makesplash || (!commander.makeicon && !commander.makesplash) ? true : false
 }
 
-module.exports = new Promise((resolve, reject) => {
-  check(settings)
-    .then(() =>
-      generate(imageObjects, settings).then(() => {
-        resolve()
-      }).catch(e => {
-        reject(e)
-      })
-    )
-    .catch(e => reject(e))
-})
+module.exports = () =>
+  new Promise((resolve, reject) => {
+    check(settings)
+      .then(() =>
+        generate(imageObjects, settings).then(() => {
+          resolve()
+        })
+      )
+      .catch(e => reject(e))
+  })

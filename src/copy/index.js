@@ -8,8 +8,8 @@
 
 require('colors')
 
-const copyAndroid = require('./android/index')
-const copyIOS = require('./ios/index')
+const copyAndroid = require('./platforms/android/index')
+const copyIOS = require('./platforms/ios/index')
 const { log } = console
 
 module.exports = async () => {

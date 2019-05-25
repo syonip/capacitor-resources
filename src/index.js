@@ -13,16 +13,28 @@ const generate = require('./generate/index')
 const copy = require('./copy/index')
 const { log } = console
 
-module.exports = () => {
-  log(`Capacitor Resources v${pjson.version}`.bold.green)
-  log('-------------------')
+const start = () => {
+  log(`📦  Capacitor Resources v${pjson.version}`.bold.green)
+  log('-----------------------------'.bold.green)
+}
+
+const finish = () => {
+  log()
+  log('----------------------------------------------'.bold.green)
+  log()
+  log('📦  Capacitor resources generated successfully!'.green.bold)
+  log()
+}
+
+module.exports = new Promise(resolve => {
+  start()
   generate()
     .then(() => {
-      copy().then(() => {
-        log('Capacitor resources generated successfully!')
-      })
+      copy()
+      finish()
+      resolve()
     })
     .catch(e => {
       log(e)
     })
-}
+})
