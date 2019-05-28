@@ -1,8 +1,9 @@
 # Capacitor Resources
 
-> Generate icon & splash screen for Capacitor projects using javascript only.
-
-[![basic-merchandising](https://imgur.com/LNOYczf.png)](https://github.com/leopq)
+Generate icon & splash screen for Capacitor projects using javascript only.
+![build](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)  ![platform](https://img.shields.io/node/v/react.svg) ![stars](https://img.shields.io/amo/stars/dustman.svg) ![license](https://img.shields.io/bower/l/bootstrap.svg)  
+  
+> [![basic-merchandising](https://imgur.com/LNOYczf.png)](https://github.com/leopq)
 
 ## Introduction
 
