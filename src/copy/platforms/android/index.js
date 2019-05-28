@@ -9,13 +9,16 @@ const fs = require('fs-extra')
 const klawSync = require('klaw-sync')
 const path = require('path')
 
-const rootPath = path.resolve(__dirname, '../../../../')
+const rootPath = process.env.CAPACITOR_PROJECT_ROOT
 
-const androidIconsOrigin = path.join(rootPath, 'resources', 'android', 'icon')
-const androidIconsDestination = path.join(rootPath, 'android', 'app', 'src', 'main', 'res')
+const androidPath = path.join(rootPath, 'android')
+const resourcesPath = path.join(rootPath, 'resources')
 
-const androidSplashesOrigin = path.join(rootPath, 'resources', 'android', 'splash')
-const androidSplashesDestination = path.join(rootPath, 'android', 'app', 'src', 'main', 'res')
+const androidIconsOrigin = path.join(resourcesPath, 'android', 'icon')
+const androidIconsDestination = path.join(androidPath, 'app', 'src', 'main', 'res')
+
+const androidSplashesOrigin = path.join(resourcesPath, 'android', 'splash')
+const androidSplashesDestination = path.join(androidPath, 'app', 'src', 'main', 'res')
 
 const getAndroidIcons = () => {
   return new Promise((resolve, reject) => {
@@ -78,6 +81,9 @@ const copyAndroidSplashes = async () => {
     splashes.map(splashPath => {
       new Promise((resolve, reject) => {
         try {
+          fs.ensureDirSync(
+            path.join(androidSplashesDestination, splashPath.replace('-screen.png', ''))
+          )
           fs.copyFileSync(
             path.join(androidSplashesOrigin, splashPath),
             path.join(androidSplashesDestination, splashPath.replace('-screen.png', '/splash.png'))
@@ -91,17 +97,16 @@ const copyAndroidSplashes = async () => {
   )
 }
 
-module.exports = () =>
-  new Promise(async (resolve, reject) => {
-    try {
-      if (fs.existsSync(androidIconsDestination)) {
-        await copyAndroidIcons()
-        await copyAndroidSplashes()
-        resolve()
-      } else {
-        resolve()
-      }
-    } catch (e) {
-      reject(e)
+module.exports = new Promise(async (resolve, reject) => {
+  try {
+    if (fs.existsSync(androidPath)) {
+      await copyAndroidIcons()
+      await copyAndroidSplashes()
+      resolve()
+    } else {
+      resolve()
     }
-  })
+  } catch (e) {
+    reject(e)
+  }
+})

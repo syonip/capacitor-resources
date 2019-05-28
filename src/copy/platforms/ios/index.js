@@ -9,13 +9,16 @@ const fs = require('fs-extra')
 const klawSync = require('klaw-sync')
 const path = require('path')
 
-const rootPath = path.resolve(__dirname, '../../../../')
+const rootPath = process.env.CAPACITOR_PROJECT_ROOT
 
-const iosIconsOrigin = path.join(rootPath, 'resources', 'ios', 'icon')
-const iosIconsDestination = path.join(rootPath, 'ios', 'App/App/Assets.xcassets/AppIcon.appiconset')
+const iosPath = path.join(rootPath, 'ios')
+const resourcesPath = path.join(rootPath, 'resources')
 
-const iosSplashOrigin = path.join(rootPath, 'resources', 'splash.png')
-const iosSplashesDestination = path.join(rootPath, 'ios', 'App/App/Assets.xcassets/Splash.imageset')
+const iosIconsOrigin = path.join(resourcesPath, 'ios', 'icon')
+const iosIconsDestination = path.join(iosPath, 'App/App/Assets.xcassets/AppIcon.appiconset')
+
+const iosSplashOrigin = path.join(resourcesPath, 'splash.png')
+const iosSplashesDestination = path.join(iosPath, 'App/App/Assets.xcassets/Splash.imageset')
 
 const getIOSIcons = () => {
   return new Promise((resolve, reject) => {
@@ -30,6 +33,7 @@ const getIOSIcons = () => {
 
 const copyIOSIcons = async () => {
   const icons = await getIOSIcons()
+  fs.ensureDirSync(iosIconsDestination)
   return Promise.all(
     icons.map(iconPath => {
       new Promise((resolve, reject) => {
@@ -50,6 +54,7 @@ const copyIOSIcons = async () => {
 const copyIOSSplash = async () => {
   new Promise((resolve, reject) => {
     try {
+      fs.ensureDirSync(iosSplashesDestination)
       fs.copyFileSync(
         path.join(iosSplashOrigin),
         path.join(iosSplashesDestination, 'splash-2732x2732.png')
@@ -69,17 +74,16 @@ const copyIOSSplash = async () => {
   })
 }
 
-module.exports = () =>
-  new Promise(async (resolve, reject) => {
-    try {
-      if (fs.existsSync(iosIconsDestination)) {
-        await copyIOSIcons()
-        await copyIOSSplash()
-        resolve()
-      } else {
-        resolve()
-      }
-    } catch (e) {
-      reject(e)
+module.exports = new Promise(async (resolve, reject) => {
+  try {
+    if (fs.existsSync(iosPath)) {
+      await copyIOSIcons()
+      await copyIOSSplash()
+      resolve()
+    } else {
+      resolve()
     }
-  })
+  } catch (e) {
+    reject(e)
+  }
+})

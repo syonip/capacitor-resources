@@ -8,7 +8,7 @@
     "capacitor-resources": "./bin/capacitor-resources"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "capacitor-resources": "cross-env CAPACITOR_RESOURCES_STAGE=development node bin/capacitor-resources"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "bluebird": "^3.5.1",
     "colors": "^1.1.2",
     "commander": "^2.12.2",
+    "cross-env": "^5.2.0",
     "fs-extra": "^4.0.2",
     "gauge": "^2.7.4",
     "jimp": "^0.2.28",
