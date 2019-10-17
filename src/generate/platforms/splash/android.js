@@ -4,32 +4,32 @@ module.exports = {
     path: 'android/splash/',
     definitions: [{
             name: "drawable-land-hdpi-screen.png",
-            width: 480,
-            height: 320,
+            width: 1280,
+            height: 800,
             comment: "land-hdpi"
         }, // 480x320
         {
             name: "drawable-land-ldpi-screen.png",
-            width: 320,
-            height: 200,
+            width: 1280,
+            height: 800,
             comment: "land-ldpi"
         }, // 320x200
         {
             name: "drawable-land-mdpi-screen.png",
-            width: 800,
-            height: 480,
+            width: 2176,
+            height: 816,
             comment: "land-mdpi"
         }, // 800x480
         {
             name: "drawable-land-xhdpi-screen.png",
             width: 1280,
-            height: 720,
+            height: 800,
             comment: "land-xhdpi"
         }, // 1280x720
         {
             name: "drawable-land-xxhdpi-screen.png",
-            width: 1600,
-            height: 960,
+            width: 2720,
+            height: 1632,
             comment: "land-xxhdpi"
         }, // 1600x960
         {
