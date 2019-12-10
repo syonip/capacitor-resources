@@ -81,6 +81,7 @@ const copyAndroidSplashes = async () => {
     splashes.map(splashPath => {
       new Promise((resolve, reject) => {
         try {
+          if (splashPath.indexOf('port') > -1) return resolve()
           fs.ensureDirSync(
             path.join(
               androidSplashesDestination,
