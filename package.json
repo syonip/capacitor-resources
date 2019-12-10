@@ -1,6 +1,6 @@
 {
   "name": "capacitor-resources",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Generates icon & splash screen for capacitor projects using javascript only.",
   "main": "index.js",
   "preferGlobal": true,
