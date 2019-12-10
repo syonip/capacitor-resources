@@ -83,15 +83,21 @@ const copyAndroidSplashes = async () => {
         try {
           fs.ensureDirSync(
             path.join(
-              androidSplashesDestination.replace('-land-', ''),
-              splashPath.replace('-screen.png', '')
+              androidSplashesDestination,
+              splashPath
+                .replace('-port', '')
+                .replace('-land', '')
+                .replace('-screen.png', '')
             )
           )
           fs.copyFileSync(
             path.join(androidSplashesOrigin, splashPath),
             path.join(
-              androidSplashesDestination.replace('-land-', ''),
-              splashPath.replace('-screen.png', '/splash.9.png')
+              androidSplashesDestination,
+              splashPath
+                .replace('-port', '')
+                .replace('-land', '')
+                .replace('-screen.png', '/splash.9.png')
             )
           )
           resolve()
