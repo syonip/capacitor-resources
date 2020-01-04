@@ -41,6 +41,9 @@ const copyAndroidIcons = async () => {
     icons.map(iconPath => {
       new Promise((resolve, reject) => {
         try {
+          fs.ensureDirSync(
+            path.dirname(path.join(androidIconsDestination, iconPath))
+          )
           fs.copyFileSync(
             path.join(androidIconsOrigin, iconPath),
             path.join(androidIconsDestination, iconPath)
