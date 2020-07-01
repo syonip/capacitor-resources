@@ -4,32 +4,32 @@ module.exports = {
     path: 'android/splash/',
     definitions: [{
             name: "drawable-land-hdpi-screen.png",
-            width: 1280,
-            height: 800,
+            width: 800,
+            height: 480,
             comment: "land-hdpi"
-        }, // 480x320
+        }, // 800x480
         {
             name: "drawable-land-ldpi-screen.png",
-            width: 1280,
-            height: 800,
+            width: 320,
+            height: 200,
             comment: "land-ldpi"
         }, // 320x200
         {
             name: "drawable-land-mdpi-screen.png",
-            width: 2176,
-            height: 816,
+            width: 480,
+            height: 320,
             comment: "land-mdpi"
-        }, // 800x480
+        }, // 480x320
         {
             name: "drawable-land-xhdpi-screen.png",
             width: 1280,
-            height: 800,
+            height: 720,
             comment: "land-xhdpi"
         }, // 1280x720
         {
             name: "drawable-land-xxhdpi-screen.png",
-            width: 2720,
-            height: 1632,
+            width: 1600,
+            height: 960,
             comment: "land-xxhdpi"
         }, // 1600x960
         {
@@ -43,7 +43,7 @@ module.exports = {
             width: 480,
             height: 800,
             comment: "port-hdpi"
-        }, // 320x480
+        }, // 480x800
         {
             name: "drawable-port-ldpi-screen.png",
             width: 200,
@@ -52,10 +52,10 @@ module.exports = {
         }, // 200x320
         {
             name: "drawable-port-mdpi-screen.png",
-            width: 480,
-            height: 800,
+            width: 320,
+            height: 480,
             comment: "port-mdpi"
-        }, // 480x800
+        }, // 320x480
         {
             name: "drawable-port-xhdpi-screen.png",
             width: 720,
