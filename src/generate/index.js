@@ -199,6 +199,23 @@ function generateForConfig(imageObj, settings, config) {
   }
 
   const transformSplash = definition => {
+
+    const defer = Q.defer()
+    const image = imageObj.splash.clone()
+    
+    const width = definition.width
+    const height = definition.height
+
+    const outputFilePath = path.join(platformPath, definition.name)
+
+    image.cover(width, height).write(outputFilePath, err => {
+      if (err) defer.reject(err)
+      //display.info('Generated splash file for ' + outputFilePath);
+      defer.resolve()
+    })
+
+    return defer.promise
+/*
     const defer = Q.defer()
     const image = imageObj.splash.clone()
 
@@ -215,7 +232,7 @@ function generateForConfig(imageObj, settings, config) {
       defer.resolve()
     })
 
-    return defer.promise
+    return defer.promise */
   }
 
   return fs.ensureDir(platformPath).then(() => {
