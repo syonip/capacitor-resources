@@ -198,26 +198,6 @@ function generateForConfig(imageObj, settings, config) {
     return defer.promise
   }
 
-  const transformSplash = definition => {
-    const defer = Q.defer()
-    const image = imageObj.splash.clone()
-
-    const x = (image.bitmap.width - definition.width) / 2
-    const y = (image.bitmap.height - definition.height) / 2
-    const width = definition.width
-    const height = definition.height
-
-    const outputFilePath = path.join(platformPath, definition.name)
-
-    image.crop(x, y, width, height).write(outputFilePath, err => {
-      if (err) defer.reject(err)
-      //display.info('Generated splash file for ' + outputFilePath);
-      defer.resolve()
-    })
-
-    return defer.promise
-  }
-
   return fs.ensureDir(platformPath).then(() => {
     const definitions = config.definitions
     const sectionName = 'Generating ' + config.type + ' files for ' + config.platform
@@ -240,7 +220,7 @@ function generateForConfig(imageObj, settings, config) {
           transformPromise = transformPromise.then(() => transformIcon(def))
           break
         case 'splash':
-          transformPromise = transformPromise.then(() => transformSplash(def))
+          transformPromise = transformPromise.then(() => transformSplash(def, imageObj, platformPath))
           break
       }
       return transformPromise
@@ -296,6 +276,7 @@ commander
   .description(pjson.description)
   .option('-i, --icon [optional]', 'optional icon file path (default: ./resources/icon.png)')
   .option('-s, --splash [optional]', 'optional splash file path (default: ./resources/splash.png)')
+  .option('-t, --transform-splash [crop|cover]', 'optional splash transformation', 'crop')
   .option(
     '-p, --platforms [optional]',
     'optional platform token comma separated list (default: all platforms processed)',
@@ -316,6 +297,19 @@ const settings = {
   makeicon: commander.makeicon || (!commander.makeicon && !commander.makesplash) ? true : false,
   makesplash: commander.makesplash || (!commander.makeicon && !commander.makesplash) ? true : false
 }
+
+
+// Dinamically set splash transformation function
+function setTransformationFunction(transformation){
+  switch (transformation){
+    case 'cover':
+      return require('./splash/cover.js');
+    default:
+      return require('./splash/crop.js');
+  }
+}
+const transformSplash = setTransformationFunction(commander.transformSplash)
+
 
 module.exports = () =>
   new Promise((resolve, reject) => {
