@@ -39,6 +39,8 @@ Add your ```icon.png``` (1024x1024 px) and ```splash.png``` (2732x2732 px) files
 ### Options
 
     -V, --version               output the version number
+    -t, --transform-splash [optional] method used to generate splash screen 
+                                      available tokens: cover, crop
     -i, --icon [optional]       optional icon file path
                                 (default: ./resources/icon.png)
     -s, --splash [optional]     optional splash file path
