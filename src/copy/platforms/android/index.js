@@ -11,7 +11,7 @@ const path = require('path')
 
 const rootPath = process.env.CAPACITOR_PROJECT_ROOT
 
-const androidPath = path.join(rootPath, 'android')
+const androidPath = path.join(rootPath, 'platforms/android')
 const resourcesPath = path.join(rootPath, 'resources')
 
 const androidIconsOrigin = path.join(resourcesPath, 'android', 'icon')
